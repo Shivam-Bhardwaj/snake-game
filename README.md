@@ -1,6 +1,6 @@
 # Capstone Snake Game
 
-![img](file:///home/shivam/.config/Typora/typora-user-images/image-20200909064833431.png?lastModify=1599659501?lastModify=1599659501)
+![image](README.assets/screenshot.jpg)
 
 The Capstone Project of Udacity's C++ nanodegree is a modified version of the boilerplate game given to the students.
 
