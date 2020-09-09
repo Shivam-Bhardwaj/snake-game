@@ -1,14 +1,22 @@
+/*******************************************************************************
+@file: controller.cpp
+
+@brief - game's controller class that takes in input from user
+*******************************************************************************/
 #include "controller.h"
 #include <iostream>
 #include "SDL.h"
 #include "snake.h"
 
-void SDL::Controller::ChangeDirection(std::shared_ptr<Capstone::Snake> snake, Capstone::Snake::Direction input,
+void SDL::Controller::ChangeDirection(std::shared_ptr<Capstone::Snake> snake,
+                                      Capstone::Snake::Direction input,
                                       Capstone::Snake::Direction opposite) const {
-  if (snake->direction != opposite || snake->size == 1) snake->direction = input;
+  if (snake->direction != opposite || snake->size == 1)
+    snake->direction = input;
 }
 
-void SDL::Controller::HandleInput(bool &running, std::vector<std::shared_ptr<Capstone::Snake>> &snakes) const {
+void SDL::Controller::HandleInput(bool &running,
+                                  std::vector<std::shared_ptr<Capstone::Snake>> &snakes) const {
   SDL_Event e;
   auto snake_left = snakes[0];
   auto snake_right = snakes[1];

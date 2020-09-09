@@ -1,3 +1,8 @@
+/*******************************************************************************
+@file: main.cpp
+
+@brief - main file for the snake game
+*******************************************************************************/
 #include <iostream>
 #include "controller.h"
 #include "game.h"
@@ -30,11 +35,9 @@ int main() {
   std::cout << "SizeRight: " << game.GetRightSize() << "\n";
   if (game.GetLeftScore() > game.GetRightScore()) {
     std::cout << "Left Snake Wins!" << "\n";
-  }
-  else if (game.GetLeftScore() < game.GetRightScore()) {
+  } else if (game.GetLeftScore() < game.GetRightScore()) {
     std::cout << "Right Snake Wins!" << "\n";
-  }
-  else {
+  } else {
     std::cout << "It's a Tie!" << "\n";
   }
   return 0;

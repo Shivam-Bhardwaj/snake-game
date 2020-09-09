@@ -1,16 +1,21 @@
+/*******************************************************************************
+@file: snake.cpp
+
+@brief - Snake class's function definitions
+*******************************************************************************/
 #include "snake.h"
 #include <cmath>
 #include <iostream>
 
 void Capstone::Snake::Update() {
   SDL_Point prev_cell{
-      static_cast<int>(head_x),
-      static_cast<int>(
-          head_y)};  // We first capture the head's cell before updating.
+    static_cast<int>(head_x),
+    static_cast<int>(
+      head_y)};  // We first capture the head's cell before updating.
   UpdateHead();
   SDL_Point current_cell{
-      static_cast<int>(head_x),
-      static_cast<int>(head_y)};  // Capture the head's cell after updating.
+    static_cast<int>(head_x),
+    static_cast<int>(head_y)};  // Capture the head's cell after updating.
 
   // Update all of the body vector items if the snake head has moved to a new
   // cell.
@@ -43,7 +48,8 @@ void Capstone::Snake::UpdateHead() {
   head_y = fmod(head_y + grid_height, grid_height);
 }
 
-void Capstone::Snake::UpdateBody(SDL_Point &current_head_cell, SDL_Point &prev_head_cell) {
+void Capstone::Snake::UpdateBody(SDL_Point &current_head_cell,
+                                 SDL_Point &prev_head_cell) {
   // Add previous head location to vector
   body.push_back(prev_head_cell);
 
@@ -77,3 +83,5 @@ bool Capstone::Snake::SnakeCell(int x, int y) {
   }
   return false;
 }
+
+int Capstone::Snake::GetSnakeId() const { return snake_id_; }

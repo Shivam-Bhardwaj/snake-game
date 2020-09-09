@@ -1,3 +1,8 @@
+/*******************************************************************************
+@file: game.cpp
+
+@brief -  games main running loop
+*******************************************************************************/
 #include "game.h"
 #include <iostream>
 #include "SDL.h"
@@ -7,8 +12,10 @@ Game::Game(std::size_t grid_width, std::size_t grid_height)
     random_w(0, static_cast<int>(grid_width)),
     random_h(0, static_cast<int>(grid_height)) {
   using namespace Capstone;
-  std::shared_ptr<Snake> snake_left = std::make_shared<Snake>(grid_width, grid_height, 0);
-  std::shared_ptr<Snake> snake_right = std::make_shared<Snake>(grid_width, grid_height, 1);
+  std::shared_ptr<Snake> snake_left = std::make_shared<Snake>(grid_width,
+                                                              grid_height, 0);
+  std::shared_ptr<Snake> snake_right = std::make_shared<Snake>(grid_width,
+                                                               grid_height, 1);
   snakes_.push_back(snake_left);
   snakes_.push_back(snake_right);
   for (int i = 0; i < food_size; ++i) {
@@ -93,7 +100,7 @@ void Game::PlacePoison(SDL_Point &poison) {
   while (true) {
     x = random_w(engine);
     y = random_h(engine);
-    // Check that the location is not occupied by a snake item before placing food.
+    // Check that the location is not occupied by a snake item before placing poison.
     bool is_Occupied = false;
     for (auto const snake : snakes_) {
       if (snake->SnakeCell(x, y)) {
@@ -137,15 +144,19 @@ void Game::Update() {
       if (poison.x == new_x && poison.y == new_y) {
         if (snake->GetSnakeId() == 0) {
           left_alive = false;
-          std::cout << "============================================" << std::endl;
+          std::cout << "============================================"
+                    << std::endl;
           std::cout << "  Left Snake ate poison, Gamer Over!" << std::endl;
-          std::cout << "============================================" << std::endl;
+          std::cout << "============================================"
+                    << std::endl;
         }
         if (snake->GetSnakeId() == 1) {
           right_alive = false;
-          std::cout << "============================================" << std::endl;
+          std::cout << "============================================"
+                    << std::endl;
           std::cout << "  Right Snake ate poison, Gamer Over!" << std::endl;
-          std::cout << "============================================" << std::endl;
+          std::cout << "============================================"
+                    << std::endl;
         }
         snakes_[0]->alive = false;
         snakes_[1]->alive = false;
