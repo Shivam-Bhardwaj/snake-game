@@ -12,7 +12,7 @@
 class Game {
  public:
   Game(std::size_t grid_width, std::size_t grid_height);
-  void Run(Controller const &controller, Renderer &renderer,
+  void Run(SDL::Controller const &controller, SDL::Renderer &renderer,
            std::size_t target_frame_duration);
   int GetLeftScore() const;
   int GetLeftSize() const;
@@ -22,7 +22,7 @@ class Game {
   bool GetRightStatus() const;
 
  private:
-  std::vector<std::shared_ptr<Snake>> snakes_;
+  std::vector<std::shared_ptr<Capstone::Snake>> snakes_;
   std::vector<SDL_Point> foods;
   const int food_size = 5;
   std::vector<SDL_Point> poisons;

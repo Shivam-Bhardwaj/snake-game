@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 
-Renderer::Renderer(const std::size_t screen_width,
+SDL::Renderer::Renderer(const std::size_t screen_width,
                    const std::size_t screen_height,
                    const std::size_t grid_width, const std::size_t grid_height)
     : screen_width(screen_width),
@@ -33,12 +33,12 @@ Renderer::Renderer(const std::size_t screen_width,
   }
 }
 
-Renderer::~Renderer() {
+SDL::Renderer::~Renderer() {
   SDL_DestroyWindow(sdl_window);
   SDL_Quit();
 }
 
-void Renderer::Render(const std::vector<std::shared_ptr<Snake>> &snakes, const std::vector<SDL_Point> &foods,
+void SDL::Renderer::Render(const std::vector<std::shared_ptr<Capstone::Snake>> &snakes, const std::vector<SDL_Point> &foods,
                       const std::vector<SDL_Point> &poisons) {
   SDL_Rect block;
   block.w = screen_width / grid_width;
@@ -91,7 +91,7 @@ void Renderer::Render(const std::vector<std::shared_ptr<Snake>> &snakes, const s
   SDL_RenderPresent(sdl_renderer);
 }
 
-void Renderer::UpdateWindowTitle(int score_left, int score_right, int fps) {
+void SDL::Renderer::UpdateWindowTitle(int score_left, int score_right, int fps) {
   std::string title{"Left Snake Score: " + std::to_string(score_left) + " " + \
   "Right Snake Score: " + std::to_string(score_right) + " FPS: " + std::to_string(fps)};
   SDL_SetWindowTitle(sdl_window, title.c_str());

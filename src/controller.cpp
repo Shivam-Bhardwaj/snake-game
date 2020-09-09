@@ -3,12 +3,12 @@
 #include "SDL.h"
 #include "snake.h"
 
-void Controller::ChangeDirection(std::shared_ptr<Snake> snake, Snake::Direction input,
-                                 Snake::Direction opposite) const {
+void SDL::Controller::ChangeDirection(std::shared_ptr<Capstone::Snake> snake, Capstone::Snake::Direction input,
+                                      Capstone::Snake::Direction opposite) const {
   if (snake->direction != opposite || snake->size == 1) snake->direction = input;
 }
 
-void Controller::HandleInput(bool &running, std::vector<std::shared_ptr<Snake>> &snakes) const {
+void SDL::Controller::HandleInput(bool &running, std::vector<std::shared_ptr<Capstone::Snake>> &snakes) const {
   SDL_Event e;
   auto snake_left = snakes[0];
   auto snake_right = snakes[1];
@@ -17,6 +17,7 @@ void Controller::HandleInput(bool &running, std::vector<std::shared_ptr<Snake>> 
       running = false;
     } else if (e.type == SDL_KEYDOWN) {
       switch (e.key.keysym.sym) {
+        using namespace Capstone;
         case SDLK_UP:
           ChangeDirection(snake_right, Snake::Direction::kUp,
                           Snake::Direction::kDown);

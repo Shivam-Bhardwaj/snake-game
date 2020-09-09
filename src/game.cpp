@@ -6,6 +6,7 @@ Game::Game(std::size_t grid_width, std::size_t grid_height)
   : engine(dev()),
     random_w(0, static_cast<int>(grid_width)),
     random_h(0, static_cast<int>(grid_height)) {
+  using namespace Capstone;
   std::shared_ptr<Snake> snake_left = std::make_shared<Snake>(grid_width, grid_height, 0);
   std::shared_ptr<Snake> snake_right = std::make_shared<Snake>(grid_width, grid_height, 1);
   snakes_.push_back(snake_left);
@@ -23,7 +24,7 @@ Game::Game(std::size_t grid_width, std::size_t grid_height)
   }
 }
 
-void Game::Run(Controller const &controller, Renderer &renderer,
+void Game::Run(SDL::Controller const &controller, SDL::Renderer &renderer,
                std::size_t target_frame_duration) {
   Uint32 title_timestamp = SDL_GetTicks();
   Uint32 frame_start;
