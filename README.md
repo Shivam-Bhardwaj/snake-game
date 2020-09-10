@@ -2,7 +2,7 @@
 
 ![image](README.assets/screenshot.jpg)
 
-The Capstone Project of Udacity's C++ nanodegree is a modified version of the boilerplate game given to the students.
+The Capstone Project of Udacity's C++ NanoDegree is a modified version of the boilerplate game given to the students.
 
 In the current version, a second snake is added to make the game multi-player. In addition to this poison is added to kill the snake that touches it.
 
@@ -50,3 +50,19 @@ project_folder
 2. Make a build directory in the top level directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
 4. Run it: `./SnakeGame`.
+
+## Project Rubrics Discussed
+
+In order to have a successful submission, we are supposed to address at least 5 optional rubrics given in the capstone project. 
+
+| Category/Rubric                                              | Explanation and link(s)                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **Loops, Functions, I/O**<br />The project demonstrates an understanding of C++ functions and control structures. | The whole project is organized with proper use of functions and flow of data. |
+| **Object Oriented Programming**<br />The project uses Object Oriented Programming techniques. | As mentioned in the project structure the code uses 4 classes : [Snake](https://github.com/Shivam-Bhardwaj/snake-game/blob/master/src/snake.h), [Controller](https://github.com/Shivam-Bhardwaj/snake-game/blob/master/src/controller.h), [Game](https://github.com/Shivam-Bhardwaj/snake-game/blob/master/src/game.h) and [Renderer](https://github.com/Shivam-Bhardwaj/snake-game/blob/master/src/renderer.h) class. All the data and the control logic is encapsulated in them. |
+| **Object Oriented Programming**<br />Classes use appropriate access specifiers for class members. | In all the classes mentioned above, the data and member functions under private or public access specifiers based on the usability outside the class. Example the *getters* (ex [int GetSnakeId()](https://github.com/Shivam-Bhardwaj/snake-game/blob/master/src/snake.h#L56)) are put in public, but the *Update*(ex [void UpdateBody()](https://github.com/Shivam-Bhardwaj/snake-game/blob/master/src/snake.h#L78)) functions are put in in private as they are supposed to used from the class's member functions only. |
+| **Object Oriented Programming**<br />Class constructors utilize member initialization lists. | Several functions ex: [Snake constructor](https://github.com/Shivam-Bhardwaj/snake-game/blob/master/src/snake.h#L28) uses member initializer lists. |
+| **Object Oriented Programming**<br />Classes abstract implementation details from their interfaces. | All the header files contains proper documentation of the member functions ex: [link](https://github.com/Shivam-Bhardwaj/snake-game/blob/master/src/snake.h#L39) |
+| **Memory Management**<br />The project makes use of references in function declarations. | [link1: ](https://github.com/Shivam-Bhardwaj/snake-game/blob/master/src/renderer.h#L39) void Render() and [link2:](https://github.com/Shivam-Bhardwaj/snake-game/blob/master/src/game.h#L83) void PlacePoison() uses pass by reference |
+| **Memory Management**<br />The project uses smart pointers instead of raw pointers. | To create multiple snakes I have used a vector of shared pointers [ex](https://github.com/Shivam-Bhardwaj/snake-game/blob/master/src/game.h#L90) |
+| **Memory Management**<br />The project uses destructor(s) appropriately. | Destructor for [renderer](https://github.com/Shivam-Bhardwaj/snake-game/blob/master/src/renderer.h#L28) is used to close the window and perform cleanup after the game ends |
+
